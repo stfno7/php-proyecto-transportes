@@ -1,0 +1,13 @@
+// Admin
+INSERT INTO usuarios (apellido, nombre, dni, clave, activo, nivel_id, fecha_creacion, imagen) 
+VALUES ('Admin', 'Juan', '11111111', 'claveAdmin', 1, 1, NOW(), 'profile-img.jpg');
+
+// Operador
+INSERT INTO usuarios (apellido, nombre, dni, clave, activo, nivel_id, fecha_creacion, imagen) 
+VALUES ('Operador', 'Maria', '22222222', 'claveOperador', 1, 2, NOW(), 'profile-img.jpg');
+
+// Chofer
+INSERT INTO usuarios (apellido, nombre, dni, clave, activo, nivel_id, fecha_creacion, imagen) 
+VALUES ('Chofer', 'Carlos', '33333333', 'claveChofer', 1, 3, NOW(), 'profile-img.jpg');
+
+

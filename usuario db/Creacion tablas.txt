@@ -1,0 +1,62 @@
+--nivel de usuario (Admin, operador y chofer)
+CREATE TABLE nivel ( 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    denominacion VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    apellido VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    dni VARCHAR(10) UNIQUE NOT NULL,
+    clave VARCHAR(255) NOT NULL,
+    activo BOOLEAN DEFAULT 0,
+    nivel_id INT NOT NULL,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    imagen VARCHAR(255),
+    FOREIGN KEY (nivel_id) REFERENCES nivel(id)
+);
+
+CREATE TABLE marcas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    denominacion VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE tipos_transportes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    denominacion VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE transportes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    marca_id INT NOT NULL,
+    tipo_id INT NOT NULL,
+    patente VARCHAR(7) UNIQUE NOT NULL,
+    modelo VARCHAR(50),
+    disponible BOOLEAN DEFAULT 1,
+    combustible ENUM('GNC', 'Gasoil', 'Otro'),
+    fecha_carga DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (marca_id) REFERENCES marcas(id),
+    FOREIGN KEY (tipo_id) REFERENCES tipos_transportes(id)
+);
+
+CREATE TABLE destinos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    denominacion VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE viajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    chofer_id INT NOT NULL,
+    transporte_id INT NOT NULL,
+    destino_id INT NOT NULL,
+    fecha_viaje DATE NOT NULL,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    registrado_por INT NOT NULL,
+    costo DECIMAL(10,2) NOT NULL,
+    porcentaje_costo INT NOT NULL,
+    FOREIGN KEY (chofer_id) REFERENCES usuarios(id),
+    FOREIGN KEY (transporte_id) REFERENCES transportes(id),
+    FOREIGN KEY (destino_id) REFERENCES destinos(id),
+    FOREIGN KEY (registrado_por) REFERENCES usuarios(id)
+);

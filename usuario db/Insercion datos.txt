@@ -1,0 +1,36 @@
+// niveles privilegios
+INSERT INTO nivel (denominacion) VALUES 
+('Administrador'),
+('Operador'),
+('Chofer');
+
+// marcas
+INSERT INTO marcas (denominacion) VALUES 
+('Iveco'),
+('Volkswagen'),
+('Volvo'),
+('Scania');
+
+// tipos_transportes
+INSERT INTO tipos_transportes (denominacion) VALUES 
+('Camión sin acoplado'),
+('Camión con acoplado'),
+('Utilitario'),
+('Camioneta');
+
+
+// destinos
+INSERT INTO destinos (denominacion) VALUES 
+('Córdoba Capital'),
+('Villa Carlos Paz'),
+('Río Cuarto'),
+('Alta Gracia'),
+('Villa María');
+
+// USUARIO PARA LOGIN
+INSERT INTO usuarios (apellido, nombre, dni, clave, activo, nivel_id, fecha_creacion, imagen) 
+VALUES ('Pérez', 'Juan', '12345678', 'clave123', 1, 1, NOW(), 'profile-img.jpg');
+
+Usuario: 12345678
+Contraseña: clave123
+
