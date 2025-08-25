@@ -1,13 +1,1 @@
-Login demo
-
-// Administrador
-User - 11111111 
-Password - claveAdmin
-
-// Operador
-User - 22222222
-Password - claveOperador
-
-// Chofer
-User - 33333333
-Password - claveChofer
+La carpeta "usuario db" contiene información para crear la database, junto a la inserción de datos
